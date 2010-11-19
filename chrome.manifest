@@ -1,0 +1,5 @@
+content   agbshorturl              jar:chrome/agbshorturl.jar!/content/
+skin      agbshorturl  classic/1.0 jar:chrome/agbshorturl.jar!/skin/
+locale    agbshorturl  en-US       jar:chrome/agbshorturl.jar!/locale/en-US/
+
+overlay chrome://browser/content/browser.xul  chrome://agbshorturl/content/main.xul

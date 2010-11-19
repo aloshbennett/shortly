@@ -1,0 +1,17 @@
+<project name="shortly" default="dist" basedir=".">
+    <property name="app" value="agbshorturl"/>
+    <target name="dist">
+        <mkdir dir="dist"/>
+        <delete dir="dist/temp"/>
+        <mkdir dir="dist/temp/chrome"/>
+        <zip destfile="dist/temp/chrome/${app}.jar">
+            <fileset dir="chrome/${app}/"/>
+        </zip>
+        <copy file="chrome.manifest" todir="dist/temp"/>
+        <copy file="install.rdf" todir="dist/temp" />
+        <zip destfile="dist/${ant.project.name}.xpi">
+            <fileset dir="dist/temp"/>
+        </zip>
+        <delete dir="dist/temp"/>
+    </target>
+</project>

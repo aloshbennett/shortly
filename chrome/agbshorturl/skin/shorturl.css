@@ -1,0 +1,9 @@
+ #agbshorturl-statusbar-icon {
+  display: -moz-box;
+  -moz-image-region: rect(16px, 16px, 32px, 0px);
+  padding-left: 3px;
+  padding-right: 3px;
+  padding-top: 2px;
+}
+
+

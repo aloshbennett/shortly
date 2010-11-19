@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet type="text/css" href="chrome://global/skin/" ?>
+<?xml-stylesheet type="text/css"
+  href="chrome://agbshorturl/skin/shorturl.css" ?>
+
+<!DOCTYPE overlay SYSTEM
+  "chrome://agbshorturl/locale/shorturl.dtd">
+
+<overlay id="agbshorturl-browser-overlay"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <script type="application/x-javascript"
+    src="chrome://agbshorturl/content/main.js" />
+
+  <statusbar id="status-bar">
+    <statusbarpanel id="agbshorturl-statusbar-icon" 
+            class="statusbarpanel-iconic"
+            src="chrome://agbshorturl/skin/images/geo.png"
+            onclick="AGBShortURLChrome.Shortly.displayShortURL(event);"
+		    tooltip="&agbshorturl.shorlty.tooltip;">
+    </statusbarpanel>
+    <textbox id="agbshorturl-statusbar-urltext" class="plain" readonly="true" size="1" value=""/>
+  </statusbar>
+</overlay>
