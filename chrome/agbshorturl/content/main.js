@@ -2,12 +2,71 @@ if ("undefined" == typeof(AGBShortURLChrome)) {
   var AGBShortURLChrome = {};
 };
 
+AGBShortURLChrome.ArrayList = {
+  list : new Array(),
+
+  addToList : function(object) {
+    AGBShortURLChrome.ArrayList.list.push(object);
+  },
+
+  isPresent : function(object) {
+    for(i=0; i<AGBShortURLChrome.ArrayList.list.length; i++) {
+        if(AGBShortURLChrome.ArrayList.list[i] == object)
+            return true;
+    }
+    return false;
+  },
+
+  removeFromList : function(object) {
+    for(i=0; i<AGBShortURLChrome.ArrayList.list.length; i++) {
+        if(AGBShortURLChrome.ArrayList.list[i] == object) {
+            AGBShortURLChrome.ArrayList.list.splice(i, 1);
+            break;
+        }
+    }
+  }
+};
+
+AGBShortURLChrome.Cache = {
+  map : new Array(),
+
+  addToCache : function(longURL, shortURL) {
+    AGBShortURLChrome.Cache.map.push({longURL: longURL, shortURL: shortURL});
+  },
+
+  get : function(longURL) {
+    for(i=0; i<AGBShortURLChrome.Cache.map.length; i++) {
+        if(AGBShortURLChrome.Cache.map[i].longURL == longURL)
+            return AGBShortURLChrome.Cache.map[i].shortURL;
+    }
+  },
+
+  removeFromCache : function(longURL) {
+    for(i=0; i<AGBShortURLChrome.Cache.map.length; i++) {
+        if(AGBShortURLChrome.Cache.map[i].longURL == longURL) {
+            AGBShortURLChrome.Cache.map.splice(i, 1);
+            break;
+        }
+    }
+  }
+};
+
+
 AGBShortURLChrome.Shortly = {
-  displayShortURL : function(aEvent) {
-    AGBShortURLChrome.Shortly.shortenURL(window.content.location.href);
+  callList : AGBShortURLChrome.ArrayList,
+
+  urlCache : AGBShortURLChrome.Cache,
+
+  requestShortURL : function(aEvent) {
+    let longURL = window.content.location.href;
+    if(AGBShortURLChrome.Shortly.urlCache.get(longURL) == null)
+        AGBShortURLChrome.Shortly.shortenURL(longURL);
+    else
+        AGBShortURLChrome.Shortly.displayShortURL(AGBShortURLChrome.Shortly.urlCache.get(longURL));
   },
 
   shortenURL : function(url) {
+    AGBShortURLChrome.Shortly.callList.addToList(url);
     url = encodeURIComponent(url);
     script = window.content.document.createElement('script');
     script.type = 'text/javascript';
@@ -30,18 +89,27 @@ AGBShortURLChrome.Shortly = {
   },
 
   callbackEventHandler : function(event) {
-    let shortURLBar = document.getElementById("agbshorturl-statusbar-urltext");
-    let shortURL = event.target.getAttribute('shortURL');;
-    //window.alert(event.target.getAttribute('longURL'));
-    //window.alert(event.target.getAttribute('shortURL'));
-    shortURLBar.value = shortURL;
-    shortURLBar.size = shortURL.length-5;
-    //shortURLBar.selectionStart=0;
-    //shortURLBar.selectionEnd=shortURL.length;
-    //shortURLBar.maxlength = shortURL.length;
-  }
+    let shortURL = event.target.getAttribute('shortURL');
+    let longURL = event.target.getAttribute('longURL');
+    if(!AGBShortURLChrome.Shortly.callList.isPresent(longURL))
+        return;
+    AGBShortURLChrome.Shortly.callList.removeFromList(longURL);
+    AGBShortURLChrome.Shortly.urlCache.addToCache(longURL, shortURL);
+    AGBShortURLChrome.Shortly.displayShortURL(shortURL);
+  },
 
+  displayShortURL : function(shortURL) {
+    let shortURLBar = document.getElementById("agbshorturl-statusbar-urltext");
+    shortURLBar.value = shortURL;
+    shortURLBar.size = shortURL.length-3;
+  },
+
+  genericHandler : function(event) {
+    alert("generic event: "+event.name);
+    alert(event);
+  }
 };
 
 window.addEventListener('AGBShortURLChrome.shortly.callbackEvent', AGBShortURLChrome.Shortly.callbackEventHandler, false, true);
+window.addEventListener('onlocationchange', AGBShortURLChrome.Shortly.genericHandler, false, true);
 
