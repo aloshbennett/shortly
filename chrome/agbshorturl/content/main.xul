@@ -16,7 +16,7 @@
   <statusbar id="status-bar">
     <image id="agbshorturl-statusbar-icon" 
             tooltiptext="&agbshorturl.shorlty.tooltip;"
-            src="chrome://agbshorturl/skin/images/icon.png"
+            src="chrome://agbshorturl/skin/images/icon_s.png"
             onclick="AGBShortURLChrome.Shortly.requestShortURL(event);">
     </image>
     <textbox id="agbshorturl-statusbar-urltext" class="plain" readonly="true" size="1" value=""/>

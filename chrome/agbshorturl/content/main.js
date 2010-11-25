@@ -98,18 +98,26 @@ AGBShortURLChrome.Shortly = {
     AGBShortURLChrome.Shortly.displayShortURL(shortURL);
   },
 
-  displayShortURL : function(shortURL) {
-    let shortURLBar = document.getElementById("agbshorturl-statusbar-urltext");
-    shortURLBar.value = shortURL;
-    shortURLBar.size = shortURL.length-3;
+  resetDisplay : function(event) {
+    let longURL = window.content.location.href;
+    AGBShortURLChrome.Shortly.displayShortURL(AGBShortURLChrome.Shortly.urlCache.get(longURL));
   },
 
-  genericHandler : function(event) {
-    alert("generic event: "+event.name);
-    alert(event);
+  displayShortURL : function(shortURL) {
+    let shortURLBar = document.getElementById("agbshorturl-statusbar-urltext");
+    if(shortURL == null) {
+        shortURLBar.value = "";
+        shortURLBar.size = 1;
+    }
+    else {   
+        shortURLBar.value = shortURL;
+        shortURLBar.size = shortURL.length-3;
+    }
   }
+
 };
 
 window.addEventListener('AGBShortURLChrome.shortly.callbackEvent', AGBShortURLChrome.Shortly.callbackEventHandler, false, true);
-window.addEventListener('onlocationchange', AGBShortURLChrome.Shortly.genericHandler, false, true);
+window.gBrowser.tabContainer.addEventListener('TabSelect', AGBShortURLChrome.Shortly.resetDisplay, false, true);
+
 

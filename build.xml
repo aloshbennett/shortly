@@ -9,6 +9,7 @@
         </zip>
         <copy file="chrome.manifest" todir="dist/temp"/>
         <copy file="install.rdf" todir="dist/temp" />
+        <copy file="gpl.txt" todir="dist/temp"/>
         <zip destfile="dist/${ant.project.name}.xpi">
             <fileset dir="dist/temp"/>
         </zip>
