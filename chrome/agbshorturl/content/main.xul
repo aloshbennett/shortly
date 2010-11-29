@@ -19,6 +19,6 @@
             src="chrome://agbshorturl/skin/images/icon_s.png"
             onclick="AGBShortURLChrome.Shortly.requestShortURL(event);">
     </image>
-    <textbox id="agbshorturl-statusbar-urltext" class="plain" readonly="true" size="1" value=""/>
+    <textbox id="agbshorturl-statusbar-urltext" class="plain" readonly="true" value="" hidden="true"/>
   </statusbar>
 </overlay>
