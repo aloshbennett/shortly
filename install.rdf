@@ -7,7 +7,7 @@
     <em:id>shortly@aloshbennett.in</em:id>
     <em:name>Shortly URL Shortner</em:name>
     <em:description>One Click URL shortner</em:description>
-    <em:version>0.1</em:version>
+    <em:version>0.2</em:version>
     <em:creator>aloshbennett</em:creator>
     <em:homepageURL>http://www.aloshbennett.in/foss/</em:homepageURL>
     <em:iconURL>chrome://agbshorturl/skin/images/icon_m.png</em:iconURL>
