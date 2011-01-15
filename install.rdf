@@ -11,6 +11,7 @@
     <em:creator>aloshbennett</em:creator>
     <em:homepageURL>http://www.aloshbennett.in/foss/</em:homepageURL>
     <em:iconURL>chrome://agbshorturl/skin/images/icon_m.png</em:iconURL>
+    <em:optionsURL>chrome://agbshorturl/content/options.xul</em:optionsURL>
     <em:type>2</em:type>
 
     <!-- Mozilla Firefox -->

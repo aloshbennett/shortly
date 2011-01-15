@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/css" href="chrome://global/skin/" ?>
+<?xml-stylesheet type="text/css"
+  href="chrome://agbshorturl/skin/shorturl.css" ?>
+
+<!DOCTYPE overlay SYSTEM
+  "chrome://agbshorturl/locale/shorturl.dtd">
+ 
+<dialog id="agbshorturl-prefs"
+     title="Shortly Preferences"
+     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+     onload="AGBShortURLChrome.Options.displayPrefs()"
+     ondialogaccept="AGBShortURLChrome.Options.savePrefs()">
+
+  <script type="application/x-javascript"
+    src="chrome://agbshorturl/content/keyutils.js"/>
+  <script type="application/x-javascript"
+    src="chrome://agbshorturl/content/main.js" />
+  <script type="application/x-javascript"
+    src="chrome://agbshorturl/content/options.js" />
+
+  <prefpane id="agbshorturl-prefs-pane" label="Shortly Preferences">
+     <commandset>
+       <command id="toggle_accesskey" oncommand="AGBShortURLChrome.Options.toggleAccessKey();"/>
+     </commandset>
+     <vbox align="left">
+        <checkbox id="agbshorturl-prefs-clipboard-flag" label="Copy to clipboard" checked="true"/>
+        <checkbox id="agbshorturl-prefs-accesskey-flag" label="Enable keyboard shortcut" checked="true" command="toggle_accesskey"/>
+        <hbox align="center">
+          <label control="agbshorturl-prefs-accesskey-combo" value="Key combination"/>
+          <textbox id="agbshorturl-prefs-accesskey-combo" maxlength="10"
+            onfocus="AGBShortURLChrome.Options.acceptKeyCombination();"
+            onblur="AGBShortURLChrome.Options.validateKeyCombination();"/>
+        </hbox>
+    </vbox>
+  </prefpane>
+ 
+</dialog>
+

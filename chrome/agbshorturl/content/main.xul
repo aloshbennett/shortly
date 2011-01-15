@@ -11,6 +11,8 @@
   xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
   <script type="application/x-javascript"
+    src="chrome://agbshorturl/content/keyutils.js"/>
+  <script type="application/x-javascript"
     src="chrome://agbshorturl/content/main.js" />
 
   <statusbar id="status-bar">

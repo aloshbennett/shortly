@@ -4,12 +4,16 @@
         <mkdir dir="dist"/>
         <delete dir="dist/temp"/>
         <mkdir dir="dist/temp/chrome"/>
+        <mkdir dir="dist/temp/defaults"/>
         <zip destfile="dist/temp/chrome/${app}.jar">
             <fileset dir="chrome/${app}/"/>
         </zip>
         <copy file="chrome.manifest" todir="dist/temp"/>
         <copy file="install.rdf" todir="dist/temp" />
         <copy file="gpl.txt" todir="dist/temp"/>
+        <copy todir="dist/temp/defaults">
+            <fileset dir="defaults"/>
+        </copy>
         <zip destfile="dist/${ant.project.name}.xpi">
             <fileset dir="dist/temp"/>
         </zip>
