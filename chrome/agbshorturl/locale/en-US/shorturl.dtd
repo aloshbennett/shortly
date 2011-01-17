@@ -1,2 +1,6 @@
 <!ENTITY agbshorturl.shorlty.tooltip "Click to shorten URL">
+<!ENTITY agbshorturl.shorlty.options.title "Shortly Preferences">
+<!ENTITY agbshorturl.shorlty.options.clipboard.label "Copy to clipboard">
+<!ENTITY agbshorturl.shorlty.options.accesskey.label "Enable keyboard shortcut">
+<!ENTITY agbshorturl.shorlty.options.accesskey.combo "Key combination">
 

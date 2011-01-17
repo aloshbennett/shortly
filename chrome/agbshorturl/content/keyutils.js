@@ -28,8 +28,11 @@
         # Suite 330, Boston, MA  02111-1307, USA.                       #
         #################################################################
 */ 
+if ("undefined" == typeof(AGBShortURLChrome)) {
+  var AGBShortURLChrome = {};
+};
 
-var KeyUtils = {
+AGBShortURLChrome.KeyUtils = {
 
   _doKeymap : function(){
     var keymap = Array();
@@ -68,7 +71,6 @@ var KeyUtils = {
 
 
   compareKeyevent : function(ev, str){
-    //alert(this.keyev2string(ev) + " - " + str);
     return (this.keyev2string(ev) == str);
   }
 

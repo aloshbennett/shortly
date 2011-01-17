@@ -2,44 +2,28 @@ if ("undefined" == typeof(AGBShortURLChrome)) {
   var AGBShortURLChrome = {};
 };
 
-AGBShortURLChrome.Cache = {
-  map : new Array(),
-
-  addToCache : function(longURL, shortURL) {
-    this.map.push({longURL: longURL, shortURL: shortURL});
-  },
-
-  get : function(longURL) {
-    for(i=0; i<this.map.length; i++) {
-        if(this.map[i].longURL == longURL)
-            return this.map[i].shortURL;
-    }
-  },
-
-  removeFromCache : function(longURL) {
-    for(i=0; i<this.map.length; i++) {
-        if(this.map[i].longURL == longURL) {
-            this.map.splice(i, 1);
-            break;
-        }
-    }
-  }
-};
-
 
 AGBShortURLChrome.Shortly = {
   urlCache : AGBShortURLChrome.Cache,
-  serviceListener : AGBShortURLChrome.ServiceListener,
+  prefs : null,
 
   initialize : function() {
     AGBShortURLChrome.Shortly.prefs = Components.classes["@mozilla.org/preferences-service;1"]
          .getService(Components.interfaces.nsIPrefService)
          .getBranch("shortly.");
-    if(AGBShortURLChrome.Shortly.prefs.getBoolPref("accesskey.enable"))
-        window.addEventListener('keydown', AGBShortURLChrome.Shortly.keyEvent, false);
+    AGBShortURLChrome.Shortly.prefs.QueryInterface(Components.interfaces.nsIPrefBranch2);
+    AGBShortURLChrome.Shortly.prefs.addObserver("", this, false);
+    AGBShortURLChrome.Shortly.setKeyListener();
   },
 
-  loadPrefs : function() {
+  observe: function(subject, topic, data) {
+    if (topic != "nsPref:changed")
+        return;
+    if(data == "accesskey.enable") 
+        AGBShortURLChrome.Shortly.setKeyListener();
+  },
+
+  setKeyListener : function() {
     if(AGBShortURLChrome.Shortly.prefs.getBoolPref("accesskey.enable"))
         window.addEventListener('keydown', AGBShortURLChrome.Shortly.keyEvent, false);
     else
@@ -89,7 +73,6 @@ AGBShortURLChrome.Shortly = {
     };
 
     var listener = new ServiceListener(AGBShortURLChrome.Shortly.callbackHandler);
-    //channel.notificationCallbacks = listener;
     channel.asyncOpen(listener, null);
 
   },
@@ -110,7 +93,7 @@ AGBShortURLChrome.Shortly = {
 
   keyEvent : function(event) {
     var keyCombo = AGBShortURLChrome.Shortly.prefs.getCharPref("accesskey.combination");
-    if(KeyUtils.compareKeyevent(event, keyCombo))
+    if(AGBShortURLChrome.KeyUtils.compareKeyevent(event, keyCombo))
         AGBShortURLChrome.Shortly.requestShortURL();
   },
 

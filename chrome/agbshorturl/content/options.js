@@ -20,7 +20,6 @@ AGBShortURLChrome.Options = {
         AGBShortURLChrome.Shortly.prefs.setBoolPref("accesskey.enable",accessKeyCheckbox.checked);
     if(AGBShortURLChrome.Shortly.prefs.getCharPref("accesskey.combination")!=accessKeyCombo.value)
         AGBShortURLChrome.Shortly.prefs.setCharPref("accesskey.combination",accessKeyCombo.value);
-    AGBShortURLChrome.Shortly.loadPrefs();
   },
 
   toggleAccessKey : function() {
@@ -31,19 +30,22 @@ AGBShortURLChrome.Options = {
 
   acceptKeyCombination : function() {
     let accessKeyCombo = document.getElementById("agbshorturl-prefs-accesskey-combo");
-    if(accessKeyCombo.value!="Type new shortcut now...")
+    let stringBundle = document.getElementById("agbshorturl-prefs-stringbundle");
+    let newComboMessage = stringBundle.getString("agbshorturl.shorlty.options.accesskey.newcombo");
+    if(accessKeyCombo.value!=newComboMessage)
         AGBShortURLChrome.Options.lastValidCombination = accessKeyCombo.value;
-    accessKeyCombo.value="Type new shortcut now...";
+    accessKeyCombo.value=newComboMessage;
     accessKeyCombo.readOnly=true;
     accessKeyCombo.addEventListener('keydown', AGBShortURLChrome.Options.verifyKeyStroke, false);
   },
 
   verifyKeyStroke : function(event) {
-    //alert(event);
     let accessKeyCombo = document.getElementById("agbshorturl-prefs-accesskey-combo");
-    if(KeyUtils.isAllowed(event)==1) {
-        accessKeyCombo.value = KeyUtils.keyev2string(event);
+    let accessKeyCheckbox = document.getElementById("agbshorturl-prefs-accesskey-flag");
+    if(AGBShortURLChrome.KeyUtils.isAllowed(event)==1) {
+        accessKeyCombo.value = AGBShortURLChrome.KeyUtils.keyev2string(event);
         AGBShortURLChrome.Options.lastValidCombination = accessKeyCombo.value;
+        accessKeyCheckbox.focus();
     }
   },
 
