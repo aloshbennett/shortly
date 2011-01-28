@@ -36,8 +36,12 @@ AGBShortURLChrome.Shortly = {
     if(shortURL == null)
         AGBShortURLChrome.Shortly.shortenURL(longURL);
     else {
-        AGBShortURLChrome.Shortly.displayShortURL(shortURL);
-        AGBShortURLChrome.Shortly.copyClipboard(shortURL);
+        AGBShortURLChrome.Shortly.urlCache.toggleDisplay(longURL);
+        if(AGBShortURLChrome.Shortly.urlCache.isDisplayed(longURL)) {
+            AGBShortURLChrome.Shortly.displayShortURL(shortURL);
+            AGBShortURLChrome.Shortly.copyClipboard(shortURL);
+        } else
+            AGBShortURLChrome.Shortly.displayShortURL(null);
     }
   },
 
@@ -88,7 +92,11 @@ AGBShortURLChrome.Shortly = {
 
   resetDisplay : function(event) {
     let longURL = window.content.location.href;
-    AGBShortURLChrome.Shortly.displayShortURL(AGBShortURLChrome.Shortly.urlCache.get(longURL));
+    let shortURL = AGBShortURLChrome.Shortly.urlCache.get(longURL);
+    if(shortURL != null && AGBShortURLChrome.Shortly.urlCache.isDisplayed(longURL))
+        AGBShortURLChrome.Shortly.displayShortURL(shortURL);
+    else
+        AGBShortURLChrome.Shortly.displayShortURL(null);
   },
 
   keyEvent : function(event) {
