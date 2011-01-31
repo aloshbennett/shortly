@@ -6,6 +6,7 @@ if ("undefined" == typeof(AGBShortURLChrome)) {
 AGBShortURLChrome.Shortly = {
   urlCache : AGBShortURLChrome.Cache,
   prefs : null,
+  loadComplete : false,
 
   initialize : function() {
     AGBShortURLChrome.Shortly.prefs = Components.classes["@mozilla.org/preferences-service;1"]
@@ -14,6 +15,9 @@ AGBShortURLChrome.Shortly = {
     AGBShortURLChrome.Shortly.prefs.QueryInterface(Components.interfaces.nsIPrefBranch2);
     AGBShortURLChrome.Shortly.prefs.addObserver("", this, false);
     AGBShortURLChrome.Shortly.setKeyListener();
+    window.gBrowser.tabContainer.addEventListener('TabSelect', AGBShortURLChrome.Shortly.resetDisplay, false, true);
+    window.gBrowser.addEventListener('pageshow', AGBShortURLChrome.Shortly.resetDisplay, false);
+    AGBShortURLChrome.Shortly.loadComplete = true;
   },
 
   observe: function(subject, topic, data) {
@@ -31,6 +35,8 @@ AGBShortURLChrome.Shortly = {
   },
 
   requestShortURL : function(aEvent) {
+    if(!AGBShortURLChrome.Shortly.loadComplete)
+        AGBShortURLChrome.Shortly.initialize();
     let longURL = window.content.location.href;
     let shortURL = AGBShortURLChrome.Shortly.urlCache.get(longURL);
     if(shortURL == null)
@@ -127,9 +133,6 @@ AGBShortURLChrome.Shortly = {
   }
 
 };
-
+//window.addEventListener('load', AGBShortURLChrome.Shortly.initialize, false);
 AGBShortURLChrome.Shortly.initialize();
-
-window.gBrowser.tabContainer.addEventListener('TabSelect', AGBShortURLChrome.Shortly.resetDisplay, false, true);
-window.gBrowser.addEventListener('pageshow', AGBShortURLChrome.Shortly.resetDisplay, false);
 
