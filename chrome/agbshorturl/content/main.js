@@ -11,7 +11,7 @@ AGBShortURLChrome.Shortly = {
   initialize : function() {
     AGBShortURLChrome.Shortly.prefs = Components.classes["@mozilla.org/preferences-service;1"]
          .getService(Components.interfaces.nsIPrefService)
-         .getBranch("shortly.");
+         .getBranch("extensions.shortly.");
     AGBShortURLChrome.Shortly.prefs.QueryInterface(Components.interfaces.nsIPrefBranch2);
     AGBShortURLChrome.Shortly.prefs.addObserver("", this, false);
     AGBShortURLChrome.Shortly.setKeyListener();

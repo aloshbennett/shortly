@@ -1,3 +1,3 @@
-pref("shortly.clipboard.enable", true);
-pref("shortly.accesskey.enable", true);
-pref("shortly.accesskey.combination", "CTRL-ALT-S");
+pref("extensions.shortly.clipboard.enable", true);
+pref("extensions.shortly.accesskey.enable", true);
+pref("extensions.shortly.accesskey.combination", "CTRL-ALT-S");
