@@ -2,44 +2,30 @@ if ("undefined" == typeof(AGBShortURLChrome)) {
   var AGBShortURLChrome = {};
 };
 
-AGBShortURLChrome.Cache = {
-  map : new Array(),
+AGBShortURLChrome.Cache = function() {
+    this.map = new Array();
+}
 
-  addToCache : function(longURL, shortURL) {
-    this.map.push({longURL: longURL, shortURL: shortURL, displayed: true});
+AGBShortURLChrome.Cache.prototype = {
+
+  addToCache : function(key, value) {
+    this.map.push({key: key, value: value});
   },
 
-  get : function(longURL) {
+  get : function(key) {
     for(i=0; i<this.map.length; i++) {
-        if(this.map[i].longURL == longURL)
-            return this.map[i].shortURL;
+        if(this.map[i].key == key)
+            return this.map[i].value;
     }
   },
 
-  removeFromCache : function(longURL) {
+  removeFromCache : function(key) {
     for(i=0; i<this.map.length; i++) {
-        if(this.map[i].longURL == longURL) {
+        if(this.map[i].key == key) {
             this.map.splice(i, 1);
             break;
         }
     }
-  },
-
-  isDisplayed : function(longURL) {
-    for(i=0; i<this.map.length; i++) {
-        if(this.map[i].longURL == longURL)
-            return this.map[i].displayed;
-    }
-  },
-
-  toggleDisplay : function(longURL) {
-    for(i=0; i<this.map.length; i++) {
-        if(this.map[i].longURL == longURL) {
-            this.map[i].displayed = !(this.map[i].displayed);
-            return;
-        }
-    }
   }
 };
-
 

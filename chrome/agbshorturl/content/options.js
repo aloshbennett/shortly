@@ -4,9 +4,9 @@ AGBShortURLChrome.Options = {
     let clipboardCheckbox = document.getElementById("agbshorturl-prefs-clipboard-flag");
     let accessKeyCheckbox = document.getElementById("agbshorturl-prefs-accesskey-flag");
     let accessKeyCombo = document.getElementById("agbshorturl-prefs-accesskey-combo");
-    clipboardCheckbox.checked=AGBShortURLChrome.Shortly.prefs.getBoolPref("clipboard.enable");
-    accessKeyCheckbox.checked=AGBShortURLChrome.Shortly.prefs.getBoolPref("accesskey.enable");
-    accessKeyCombo.value=AGBShortURLChrome.Shortly.prefs.getCharPref("accesskey.combination");
+    clipboardCheckbox.checked=AGBShortURLChrome.Shortly.prefs.getBooleanValue("clipboard.enable");
+    accessKeyCheckbox.checked=AGBShortURLChrome.Shortly.prefs.getBooleanValue("accesskey.enable");
+    accessKeyCombo.value=AGBShortURLChrome.Shortly.prefs.getStringValue("accesskey.combination");
     accessKeyCombo.disabled=(!accessKeyCheckbox.checked);
   },
 
@@ -14,12 +14,12 @@ AGBShortURLChrome.Options = {
     let clipboardCheckbox = document.getElementById("agbshorturl-prefs-clipboard-flag");
     let accessKeyCheckbox = document.getElementById("agbshorturl-prefs-accesskey-flag");
     let accessKeyCombo = document.getElementById("agbshorturl-prefs-accesskey-combo");
-    if(AGBShortURLChrome.Shortly.prefs.getBoolPref("clipboard.enable")!=clipboardCheckbox.checked)
-        AGBShortURLChrome.Shortly.prefs.setBoolPref("clipboard.enable",clipboardCheckbox.checked);
-    if(AGBShortURLChrome.Shortly.prefs.getBoolPref("accesskey.enable")!=accessKeyCheckbox.checked)
-        AGBShortURLChrome.Shortly.prefs.setBoolPref("accesskey.enable",accessKeyCheckbox.checked);
-    if(AGBShortURLChrome.Shortly.prefs.getCharPref("accesskey.combination")!=accessKeyCombo.value)
-        AGBShortURLChrome.Shortly.prefs.setCharPref("accesskey.combination",accessKeyCombo.value);
+    if(AGBShortURLChrome.Shortly.prefs.getBooleanValue("clipboard.enable")!=clipboardCheckbox.checked)
+        AGBShortURLChrome.Shortly.prefs.setBooleanValue("clipboard.enable",clipboardCheckbox.checked);
+    if(AGBShortURLChrome.Shortly.prefs.getBooleanValue("accesskey.enable")!=accessKeyCheckbox.checked)
+        AGBShortURLChrome.Shortly.prefs.setBooleanValue("accesskey.enable",accessKeyCheckbox.checked);
+    if(AGBShortURLChrome.Shortly.prefs.getStringValue("accesskey.combination")!=accessKeyCombo.value)
+        AGBShortURLChrome.Shortly.prefs.setStringValue("accesskey.combination",accessKeyCombo.value);
   },
 
   toggleAccessKey : function() {

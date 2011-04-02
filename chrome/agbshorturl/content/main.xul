@@ -10,19 +10,38 @@
 <overlay id="agbshorturl-browser-overlay"
   xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
-  <script type="application/x-javascript"
-    src="chrome://agbshorturl/content/keyutils.js"/>
-  <script type="application/x-javascript"
-    src="chrome://agbshorturl/content/cache.js" />
-  <script type="application/x-javascript"
-    src="chrome://agbshorturl/content/main.js" />
-
   <statusbar id="status-bar">
     <image id="agbshorturl-statusbar-icon" 
             tooltiptext="&agbshorturl.shorlty.tooltip;"
             src="chrome://agbshorturl/skin/images/icon_s.png"
-            onclick="AGBShortURLChrome.Shortly.requestShortURL(event);">
+            onclick="AGBShortURLChrome.GUI.shortenPageURL()">
     </image>
-    <textbox id="agbshorturl-statusbar-urltext" class="plain" readonly="true" value="" hidden="true"/>
   </statusbar>
+
+  <popup id="contentAreaContextMenu">
+    <menuitem id="agbshorturl-contextmenu-currpage" label="Shorten Page URL" oncommand="AGBShortURLChrome.GUI.shortenPageURL()"/>
+  </popup>
+
+  <hbox id="urlbar-icons"> 
+    <image id="agbshorturl-urlbox-icon" 
+            tooltiptext="&agbshorturl.shorlty.tooltip;"
+            src="chrome://agbshorturl/skin/images/icon_s.png"
+            onclick="AGBShortURLChrome.GUI.shortenPageURL()">
+    </image>
+  </hbox>  
+
+  <toolbarpalette id="BrowserToolbarPalette">
+    <toolbarbutton id="agbshorturl-palette-button" class="toolbarbutton-1"
+      label="Shortly button" tooltiptext="shortly tooltip"/>
+  </toolbarpalette>
+
+  <script type="application/x-javascript" src="chrome://agbshorturl/content/keyutils.js"/>
+  <script type="application/x-javascript" src="chrome://agbshorturl/content/cache.js" />
+  <script type="application/x-javascript" src="chrome://agbshorturl/content/core.js" />
+  <script type="application/x-javascript" src="chrome://agbshorturl/content/callbacks.js" />
+  <script type="application/x-javascript" src="chrome://agbshorturl/content/preferences.js" />
+  <script type="application/x-javascript" src="chrome://agbshorturl/content/main.js" />
+  <script type="application/x-javascript" src="chrome://agbshorturl/content/gui.js" />
+  <script type="application/x-javascript" src="chrome://agbshorturl/content/notification.js" />
+
 </overlay>

@@ -12,12 +12,13 @@
      onload="AGBShortURLChrome.Options.displayPrefs()"
      ondialogaccept="AGBShortURLChrome.Options.savePrefs()">
 
-  <script type="application/x-javascript"
-    src="chrome://agbshorturl/content/keyutils.js"/>
-  <script type="application/x-javascript"
-    src="chrome://agbshorturl/content/main.js" />
-  <script type="application/x-javascript"
-    src="chrome://agbshorturl/content/options.js" />
+  <script type="application/x-javascript" src="chrome://agbshorturl/content/keyutils.js"/>
+  <script type="application/x-javascript" src="chrome://agbshorturl/content/cache.js" />
+  <script type="application/x-javascript" src="chrome://agbshorturl/content/core.js" />
+  <script type="application/x-javascript" src="chrome://agbshorturl/content/callbacks.js" />
+  <script type="application/x-javascript" src="chrome://agbshorturl/content/preferences.js" />
+  <script type="application/x-javascript" src="chrome://agbshorturl/content/main.js" />
+  <script type="application/x-javascript" src="chrome://agbshorturl/content/options.js" />
 
   <stringbundleset id="agbshorturl-prefs-stringbundleset">
     <stringbundle id="agbshorturl-prefs-stringbundle"
