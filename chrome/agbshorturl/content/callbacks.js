@@ -14,6 +14,10 @@ AGBShortURLChrome.Callbacks = {
 
     keyEvent : function(event) {
         AGBShortURLChrome.GUI.keyEvent(event);
+    },
+
+    clickFilter: function(event) {
+        AGBShortURLChrome.GUI.clickFilter(event);
     }
 
 };

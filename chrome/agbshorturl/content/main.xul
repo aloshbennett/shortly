@@ -1,8 +1,7 @@
 <?xml version="1.0"?>
 
 <?xml-stylesheet type="text/css" href="chrome://global/skin/" ?>
-<?xml-stylesheet type="text/css"
-  href="chrome://agbshorturl/skin/shorturl.css" ?>
+<?xml-stylesheet type="text/css" href="chrome://agbshorturl/skin/shorturl.css" ?>
 
 <!DOCTYPE overlay SYSTEM
   "chrome://agbshorturl/locale/shorturl.dtd">
@@ -19,7 +18,10 @@
   </statusbar>
 
   <popup id="contentAreaContextMenu">
-    <menuitem id="agbshorturl-contextmenu-currpage" label="Shorten Page URL" oncommand="AGBShortURLChrome.GUI.shortenPageURL()"/>
+    <menuseparator/>
+    <menuitem id="agbshorturl-contextmenu-currpage" label="Shorten Page URL" accesskey='p' oncommand="AGBShortURLChrome.GUI.shortenPageURL()"/>
+    <menuitem id="agbshorturl-contextmenu-image" label="Shorten Image URL" accesskey='i' oncommand="AGBShortURLChrome.GUI.shortenImageURL()"/>
+    <menuitem id="agbshorturl-contextmenu-link" label="Shorten Link URL" accesskey='l' oncommand="AGBShortURLChrome.GUI.shortenLinkURL()"/>
   </popup>
 
   <hbox id="urlbar-icons"> 
@@ -32,7 +34,8 @@
 
   <toolbarpalette id="BrowserToolbarPalette">
     <toolbarbutton id="agbshorturl-palette-button" class="toolbarbutton-1"
-      label="Shortly button" tooltiptext="shortly tooltip"/>
+      label="Shortly" tooltiptext="&agbshorturl.shorlty.tooltip;"
+      oncommand="AGBShortURLChrome.GUI.shortenPageURL()"/>
   </toolbarpalette>
 
   <script type="application/x-javascript" src="chrome://agbshorturl/content/keyutils.js"/>

@@ -3,3 +3,4 @@ skin      agbshorturl  classic/1.0 jar:chrome/agbshorturl.jar!/skin/
 locale    agbshorturl  en-US       jar:chrome/agbshorturl.jar!/locale/en-US/
 
 overlay chrome://browser/content/browser.xul  chrome://agbshorturl/content/main.xul
+style chrome://global/content/customizeToolbar.xul chrome://agbshorturl/skin/shorturl.css

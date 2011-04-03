@@ -11,7 +11,7 @@ AGBShortURLChrome.GUI.Notification = {
         var notification = notificationBox.appendNotification(
             "",
             "shortly-"+shortURL,
-            "",
+            "chrome://agbshorturl/skin/images/icon_m.png",
             notificationBox.PRIORITY_INFO_MEDIUM,
             null);
 
@@ -22,9 +22,9 @@ AGBShortURLChrome.GUI.Notification = {
         inputnode.value=shortURL;
         inputnode.readOnly =true;
         inputnode.class = "plain";
-        txtnode = document.createTextNode("Copy this value -> ");
+        txtnode = document.createTextNode("Shortly: Generated short URL '"+shortURL+"' and copied to clipboard.");
         fragment.appendChild(txtnode);
-        fragment.appendChild(inputnode);
+        //fragment.appendChild(inputnode);
 
         messageText.removeChild(messageText.firstChild);
         messageText.appendChild(fragment);

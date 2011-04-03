@@ -6,4 +6,10 @@
   padding-top: 2px;
 }
 
+#agbshorturl-palette-button {
+  list-style-image: url("chrome://agbshorturl/skin/images/icon_m.png");
+}
 
+toolbar[iconsize="small"] #agbshorturl-palette-button {
+  list-style-image: url("chrome://agbshorturl/skin/images/icon_vs.png");
+}
