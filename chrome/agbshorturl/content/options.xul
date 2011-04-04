@@ -30,6 +30,19 @@
        <command id="toggle_accesskey" oncommand="AGBShortURLChrome.Options.toggleAccessKey();"/>
      </commandset>
      <vbox align="left">
+        <label value="&agbshorturl.shorlty.options.display;"/>
+        <hbox align="center">
+          <spacer width="50%" flex="1"/>
+          <checkbox id="agbshorturl-prefs-addonbar-flag" label="&agbshorturl.shorlty.options.addonbar.label;" checked="true"/>
+        </hbox>
+        <hbox align="center">
+          <spacer width="50%" flex="1"/>
+          <checkbox id="agbshorturl-prefs-urlbox-flag" label="&agbshorturl.shorlty.options.urlbox.label;" checked="true"/>
+        </hbox>
+        <hbox align="center">
+          <spacer width="50%" flex="1"/>
+          <checkbox id="agbshorturl-prefs-contextmenu-flag" label="&agbshorturl.shorlty.options.contextmenu.label;" checked="true"/>
+        </hbox>
         <checkbox id="agbshorturl-prefs-clipboard-flag" label="&agbshorturl.shorlty.options.clipboard.label;" checked="true"/>
         <checkbox id="agbshorturl-prefs-accesskey-flag" label="&agbshorturl.shorlty.options.accesskey.label;" checked="true" command="toggle_accesskey"/>
         <hbox align="center">

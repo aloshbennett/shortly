@@ -9,19 +9,22 @@
 <overlay id="agbshorturl-browser-overlay"
   xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
+  <stringbundleset id="stringbundleset">
+    <stringbundle id="agbshorturl-prefs-stringbundle"
+      src="chrome://agbshorturl/locale/shorturl.properties" />
+  </stringbundleset>
+
   <statusbar id="status-bar">
-    <image id="agbshorturl-statusbar-icon" 
-            tooltiptext="&agbshorturl.shorlty.tooltip;"
-            src="chrome://agbshorturl/skin/images/icon_s.png"
-            onclick="AGBShortURLChrome.GUI.shortenPageURL()">
-    </image>
+    <statusbarpanel id="agbshorturl-statusbar-icon" class="statusbarpanel-iconic" image="chrome://agbshorturl/skin/images/icon_vs.png"
+        tooltiptext="&agbshorturl.shorlty.tooltip;" onclick="AGBShortURLChrome.GUI.shortenPageURL()">
+    </statusbarpanel>
   </statusbar>
 
   <popup id="contentAreaContextMenu">
-    <menuseparator/>
-    <menuitem id="agbshorturl-contextmenu-currpage" label="Shorten Page URL" accesskey='p' oncommand="AGBShortURLChrome.GUI.shortenPageURL()"/>
-    <menuitem id="agbshorturl-contextmenu-image" label="Shorten Image URL" accesskey='i' oncommand="AGBShortURLChrome.GUI.shortenImageURL()"/>
-    <menuitem id="agbshorturl-contextmenu-link" label="Shorten Link URL" accesskey='l' oncommand="AGBShortURLChrome.GUI.shortenLinkURL()"/>
+    <menuseparator id="agbshorturl-contextmenu-separator"/>
+    <menuitem id="agbshorturl-contextmenu-currpage" label="&agbshorturl.shorlty.contextmenu.page;" accesskey='p' oncommand="AGBShortURLChrome.GUI.shortenPageURL()"/>
+    <menuitem id="agbshorturl-contextmenu-image" label="&agbshorturl.shorlty.contextmenu.image;" accesskey='i' oncommand="AGBShortURLChrome.GUI.shortenImageURL()"/>
+    <menuitem id="agbshorturl-contextmenu-link" label="&agbshorturl.shorlty.contextmenu.link;" accesskey='l' oncommand="AGBShortURLChrome.GUI.shortenLinkURL()"/>
   </popup>
 
   <hbox id="urlbar-icons"> 
@@ -34,7 +37,7 @@
 
   <toolbarpalette id="BrowserToolbarPalette">
     <toolbarbutton id="agbshorturl-palette-button" class="toolbarbutton-1"
-      label="Shortly" tooltiptext="&agbshorturl.shorlty.tooltip;"
+      label="&agbshorturl.shorlty;" tooltiptext="&agbshorturl.shorlty.tooltip;"
       oncommand="AGBShortURLChrome.GUI.shortenPageURL()"/>
   </toolbarpalette>
 
@@ -47,4 +50,7 @@
   <script type="application/x-javascript" src="chrome://agbshorturl/content/gui.js" />
   <script type="application/x-javascript" src="chrome://agbshorturl/content/notification.js" />
 
+  <script>
+    addEventListener("load", function() {AGBShortURLChrome.Shortly.load();}, false);
+  </script>
 </overlay>

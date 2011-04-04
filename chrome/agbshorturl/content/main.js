@@ -15,7 +15,8 @@ AGBShortURLChrome.Shortly = {
 
   gotShortURL : function(longURL, shortURL) {
     this.urlCache.addToCache(longURL, shortURL);
-    AGBShortURLChrome.GUI.copyClipboard(shortURL);
+    if(this.prefs.getBooleanValue("clipboard.enable"))
+        AGBShortURLChrome.GUI.copyClipboard(shortURL);
     AGBShortURLChrome.GUI.Notification.displayNotification(shortURL);
   },
 
@@ -30,9 +31,19 @@ AGBShortURLChrome.Shortly = {
   preferenceChanged: function(preference) {
     if(preference == "accesskey.enable")
         AGBShortURLChrome.GUI.setKeyListener();
-  }
+    if(preference == "addonbar.enable")
+        AGBShortURLChrome.GUI.initializeGUI();
+    if(preference == "urlbox.enable")
+        AGBShortURLChrome.GUI.initializeGUI();
+  },
 
+  load: function() {
+    AGBShortURLChrome.Shortly.initialize();
+    //setTimeout('AGBShortURLChrome.GUI.initializeListeners()', 1000);
+    AGBShortURLChrome.GUI.initializeGUI();
+    AGBShortURLChrome.GUI.initializeListeners();
+  }
 };
 
-AGBShortURLChrome.Shortly.initialize();
+
 

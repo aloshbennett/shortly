@@ -17,15 +17,20 @@ AGBShortURLChrome.GUI.Notification = {
 
         var messageText = document.getAnonymousElementByAttribute(notification, "anonid", "messageText");
         var fragment = document.createDocumentFragment();
-        inputnode = document.createElementNS("http://www.w3.org/1999/xhtml","input");
-        inputnode.type="text";
-        inputnode.value=shortURL;
-        inputnode.readOnly =true;
-        inputnode.class = "plain";
-        txtnode = document.createTextNode("Shortly: Generated short URL '"+shortURL+"' and copied to clipboard.");
-        fragment.appendChild(txtnode);
-        //fragment.appendChild(inputnode);
-
+        let stringBundle = document.getElementById("agbshorturl-prefs-stringbundle");
+        if(AGBShortURLChrome.Shortly.prefs.getBooleanValue("clipboard.enable")) {
+            let txtnode = document.createTextNode(stringBundle.getFormattedString("agbshorturl.shorlty.notification.clipboard.message", [shortURL]));
+            fragment.appendChild(txtnode);
+        } else {
+            let inputnode = document.createElementNS("http://www.w3.org/1999/xhtml","input");
+            inputnode.type="text";
+            inputnode.value=shortURL;
+            inputnode.readOnly =true;
+            inputnode.class = "plain";
+            let txtnode = document.createTextNode(stringBundle.getString("agbshorturl.shorlty.notification.noclipboard.message")+" ");
+            fragment.appendChild(txtnode);
+            fragment.appendChild(inputnode);
+        }
         messageText.removeChild(messageText.firstChild);
         messageText.appendChild(fragment);
 

@@ -1,9 +1,15 @@
 AGBShortURLChrome.Options = {
   lastValidCombination : null,
   displayPrefs : function() {
+    let addonBarCheckbox = document.getElementById("agbshorturl-prefs-addonbar-flag");
+    let urlBoxCheckbox = document.getElementById("agbshorturl-prefs-urlbox-flag");
+    let contextMenuCheckbox = document.getElementById("agbshorturl-prefs-contextmenu-flag");
     let clipboardCheckbox = document.getElementById("agbshorturl-prefs-clipboard-flag");
     let accessKeyCheckbox = document.getElementById("agbshorturl-prefs-accesskey-flag");
     let accessKeyCombo = document.getElementById("agbshorturl-prefs-accesskey-combo");
+    addonBarCheckbox.checked=AGBShortURLChrome.Shortly.prefs.getBooleanValue("addonbar.enable");
+    urlBoxCheckbox.checked=AGBShortURLChrome.Shortly.prefs.getBooleanValue("urlbox.enable");
+    contextMenuCheckbox.checked=AGBShortURLChrome.Shortly.prefs.getBooleanValue("contextmenu.enable");
     clipboardCheckbox.checked=AGBShortURLChrome.Shortly.prefs.getBooleanValue("clipboard.enable");
     accessKeyCheckbox.checked=AGBShortURLChrome.Shortly.prefs.getBooleanValue("accesskey.enable");
     accessKeyCombo.value=AGBShortURLChrome.Shortly.prefs.getStringValue("accesskey.combination");
@@ -11,9 +17,18 @@ AGBShortURLChrome.Options = {
   },
 
   savePrefs : function() {
+    let addonBarCheckbox = document.getElementById("agbshorturl-prefs-addonbar-flag");
+    let urlBoxCheckbox = document.getElementById("agbshorturl-prefs-urlbox-flag");
+    let contextMenuCheckbox = document.getElementById("agbshorturl-prefs-contextmenu-flag");
     let clipboardCheckbox = document.getElementById("agbshorturl-prefs-clipboard-flag");
     let accessKeyCheckbox = document.getElementById("agbshorturl-prefs-accesskey-flag");
     let accessKeyCombo = document.getElementById("agbshorturl-prefs-accesskey-combo");
+    if(AGBShortURLChrome.Shortly.prefs.getBooleanValue("addonbar.enable")!=addonBarCheckbox.checked)
+        AGBShortURLChrome.Shortly.prefs.setBooleanValue("addonbar.enable",addonBarCheckbox.checked);
+    if(AGBShortURLChrome.Shortly.prefs.getBooleanValue("urlbox.enable")!=urlBoxCheckbox.checked)
+        AGBShortURLChrome.Shortly.prefs.setBooleanValue("urlbox.enable",urlBoxCheckbox.checked);
+    if(AGBShortURLChrome.Shortly.prefs.getBooleanValue("contextmenu.enable")!=contextMenuCheckbox.checked)
+        AGBShortURLChrome.Shortly.prefs.setBooleanValue("contextmenu.enable",contextMenuCheckbox.checked);
     if(AGBShortURLChrome.Shortly.prefs.getBooleanValue("clipboard.enable")!=clipboardCheckbox.checked)
         AGBShortURLChrome.Shortly.prefs.setBooleanValue("clipboard.enable",clipboardCheckbox.checked);
     if(AGBShortURLChrome.Shortly.prefs.getBooleanValue("accesskey.enable")!=accessKeyCheckbox.checked)
