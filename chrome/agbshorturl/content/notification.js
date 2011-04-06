@@ -18,6 +18,7 @@ AGBShortURLChrome.GUI.Notification = {
         var messageText = document.getAnonymousElementByAttribute(notification, "anonid", "messageText");
         var fragment = document.createDocumentFragment();
         let stringBundle = document.getElementById("agbshorturl-prefs-stringbundle");
+        let delay = 5000;
         if(AGBShortURLChrome.Shortly.prefs.getBooleanValue("clipboard.enable")) {
             let txtnode = document.createTextNode(stringBundle.getFormattedString("agbshorturl.shorlty.notification.clipboard.message", [shortURL]));
             fragment.appendChild(txtnode);
@@ -27,6 +28,7 @@ AGBShortURLChrome.GUI.Notification = {
             inputnode.value=shortURL;
             inputnode.readOnly =true;
             inputnode.class = "plain";
+            delay=10000;
             let txtnode = document.createTextNode(stringBundle.getString("agbshorturl.shorlty.notification.noclipboard.message")+" ");
             fragment.appendChild(txtnode);
             fragment.appendChild(inputnode);
@@ -34,7 +36,7 @@ AGBShortURLChrome.GUI.Notification = {
         messageText.removeChild(messageText.firstChild);
         messageText.appendChild(fragment);
 
-        setTimeout('AGBShortURLChrome.GUI.Notification.clearNotification()', 5000);
+        setTimeout('AGBShortURLChrome.GUI.Notification.clearNotification()', delay);
     },
 
     clearNotification: function() {

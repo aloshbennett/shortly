@@ -7,7 +7,7 @@
 <!ENTITY agbshorturl.shorlty.options.display "Display options:">
 <!ENTITY agbshorturl.shorlty.options.addonbar.label "Add-on Bar">
 <!ENTITY agbshorturl.shorlty.options.urlbox.label "URL Box">
-<!ENTITY agbshorturl.shorlty.options.contextmenu.label "Context Menu">
+<!ENTITY agbshorturl.shorlty.options.contextmenu.label "Right-Click Menu">
 <!ENTITY agbshorturl.shorlty.options.clipboard.label "Copy to clipboard">
 <!ENTITY agbshorturl.shorlty.options.accesskey.label "Enable keyboard shortcut">
 <!ENTITY agbshorturl.shorlty.options.accesskey.combo "Key combination">

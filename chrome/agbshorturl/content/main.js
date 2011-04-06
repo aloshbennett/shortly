@@ -39,7 +39,6 @@ AGBShortURLChrome.Shortly = {
 
   load: function() {
     AGBShortURLChrome.Shortly.initialize();
-    //setTimeout('AGBShortURLChrome.GUI.initializeListeners()', 1000);
     AGBShortURLChrome.GUI.initializeGUI();
     AGBShortURLChrome.GUI.initializeListeners();
   }
