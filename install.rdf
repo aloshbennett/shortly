@@ -7,6 +7,7 @@
     <em:id>shortly@aloshbennett.in</em:id>
     <em:name>Shortly URL Shortner</em:name>
     <em:description>One Click URL shortner</em:description>
+    <em:unpack>true</em:unpack>
     <em:version>1.04</em:version>
     <em:creator>aloshbennett</em:creator>
     <em:homepageURL>http://www.aloshbennett.in/foss/</em:homepageURL>

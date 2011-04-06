@@ -4,10 +4,10 @@ if ("undefined" == typeof(AGBShortURLChrome)) {
 
 
 AGBShortURLChrome.GUI.Notification = {
-    notificationBox: gBrowser.getNotificationBox(),
+    timerCache: new AGBShortURLChrome.Cache(),
 
     displayNotification: function(shortURL) {
-        notificationBox = gBrowser.getNotificationBox();
+        var notificationBox = gBrowser.getNotificationBox();
         var notification = notificationBox.appendNotification(
             "",
             "shortly-"+shortURL,
@@ -35,11 +35,18 @@ AGBShortURLChrome.GUI.Notification = {
         }
         messageText.removeChild(messageText.firstChild);
         messageText.appendChild(fragment);
-
-        setTimeout('AGBShortURLChrome.GUI.Notification.clearNotification()', delay);
+        var event = {
+          notify: function(timer) {
+            AGBShortURLChrome.GUI.Notification.clearNotification(notificationBox);
+            AGBShortURLChrome.GUI.Notification.timerCache.removeFromCache(timer);
+          }
+        };
+        var timer = Components.classes["@mozilla.org/timer;1"].createInstance(Components.interfaces.nsITimer);
+        timer.initWithCallback(event,delay, Components.interfaces.nsITimer.TYPE_ONE_SHOT);
+        this.timerCache.addToCache(timer, timer);
     },
 
-    clearNotification: function() {
+    clearNotification: function(notificationBox) {
         notificationBox.removeAllNotifications();
     }
 };
