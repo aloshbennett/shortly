@@ -10,6 +10,7 @@
     <em:unpack>true</em:unpack>
     <em:version>1.04</em:version>
     <em:creator>aloshbennett</em:creator>
+    <em:translator>Renato Silva (pt-BR)</em:translator>
     <em:homepageURL>http://www.aloshbennett.in/foss/</em:homepageURL>
     <em:iconURL>chrome://agbshorturl/skin/images/icon_m.png</em:iconURL>
     <em:optionsURL>chrome://agbshorturl/content/options.xul</em:optionsURL>
@@ -23,5 +24,15 @@
         <em:maxVersion>4.0.*</em:maxVersion>
       </Description>
     </em:targetApplication>
+
+    <em:localized>
+      <Description>
+        <em:locale>pt-BR</em:locale>
+        <em:name>Shortly Encurtador de URL</em:name>
+        <em:creator>aloshbennett</em:creator>
+        <em:translator>Renato Silva (pt-BR)</em:translator>
+        <em:description>Encurtador rápido de endereços web.</em:description>
+      </Description>
+    </em:localized>
   </Description>
 </RDF>

@@ -1,0 +1,14 @@
+<!ENTITY agbshorturl.shorlty "Shortly">
+<!ENTITY agbshorturl.shorlty.tooltip "Clique para encurtar o endereço">
+<!ENTITY agbshorturl.shorlty.contextmenu.page "Encurtar endereço da página">
+<!ENTITY agbshorturl.shorlty.contextmenu.image "Encurtar endereço da imagem">
+<!ENTITY agbshorturl.shorlty.contextmenu.link "Encurtar endereço do link">
+<!ENTITY agbshorturl.shorlty.options.title "Preferências do Shortly">
+<!ENTITY agbshorturl.shorlty.options.display "Opções de visualização:">
+<!ENTITY agbshorturl.shorlty.options.addonbar.label "Barra de extensões">
+<!ENTITY agbshorturl.shorlty.options.urlbox.label "Barra de endereços">
+<!ENTITY agbshorturl.shorlty.options.contextmenu.label "Menu de contexto">
+<!ENTITY agbshorturl.shorlty.options.clipboard.label "Copiar para a área de transferência">
+<!ENTITY agbshorturl.shorlty.options.accesskey.label "Habilitar atalho de teclado">
+<!ENTITY agbshorturl.shorlty.options.accesskey.combo "Combinação de teclas">
+
