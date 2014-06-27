@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
   xmlns:em="http://www.mozilla.org/2004/em-rdf#">
@@ -31,7 +31,7 @@
         <em:name>Shortly Encurtador de URL</em:name>
         <em:creator>aloshbennett</em:creator>
         <em:translator>Renato Silva (pt-BR)</em:translator>
-        <em:description>Encurtador r·pido de endereÁos web.</em:description>
+        <em:description>Encurtador r√°pido de endere√ßos web.</em:description>
       </Description>
     </em:localized>
   </Description>
