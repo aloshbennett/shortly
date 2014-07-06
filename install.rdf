@@ -8,7 +8,7 @@
     <em:name>Shortly URL Shortner</em:name>
     <em:description>One Click URL shortner</em:description>
     <em:unpack>true</em:unpack>
-    <em:version>1.04</em:version>
+    <em:version>1.10</em:version>
     <em:creator>aloshbennett</em:creator>
     <em:translator>Renato Silva (pt-BR)</em:translator>
     <em:homepageURL>http://www.aloshbennett.in/foss/</em:homepageURL>
@@ -21,7 +21,7 @@
       <Description>
         <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
         <em:minVersion>3.0</em:minVersion>
-        <em:maxVersion>4.0.*</em:maxVersion>
+        <em:maxVersion>31.0b6*</em:maxVersion>
       </Description>
     </em:targetApplication>
 
