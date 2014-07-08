@@ -11,6 +11,7 @@
     <em:version>1.10</em:version>
     <em:creator>aloshbennett</em:creator>
     <em:translator>Renato Silva (pt-BR)</em:translator>
+    <em:translator>Sierk Bornemann (de)</em:translator>
     <em:homepageURL>http://www.aloshbennett.in/foss/</em:homepageURL>
     <em:iconURL>chrome://agbshorturl/skin/images/icon_m.png</em:iconURL>
     <em:optionsURL>chrome://agbshorturl/content/options.xul</em:optionsURL>
@@ -32,6 +33,16 @@
         <em:creator>aloshbennett</em:creator>
         <em:translator>Renato Silva (pt-BR)</em:translator>
         <em:description>Encurtador rápido de endereços web.</em:description>
+      </Description>
+    </em:localized>
+
+    <em:localized>
+      <Description>
+        <em:locale>de</em:locale>
+        <em:name>Shortly URL-Verkürzer</em:name>
+        <em:creator>aloshbennett</em:creator>
+        <em:translator>Sierk Bornemann (sierkb)</em:translator>
+        <em:description>1-Klick-URL-Verkürzer</em:description>
       </Description>
     </em:localized>
   </Description>
