@@ -1,0 +1,13 @@
+<!ENTITY agbshorturl.shorlty "Shortly">
+<!ENTITY agbshorturl.shorlty.tooltip "Klicke zum Verkürzen des URL">
+<!ENTITY agbshorturl.shorlty.contextmenu.page "Verkürze Webseiten-URL">
+<!ENTITY agbshorturl.shorlty.contextmenu.image "Verkürze Bild-URL">
+<!ENTITY agbshorturl.shorlty.contextmenu.link "Verkürze Link-URL">
+<!ENTITY agbshorturl.shorlty.options.title "Shortly Einstellungen">
+<!ENTITY agbshorturl.shorlty.options.display "Darstellungsoptionen:">
+<!ENTITY agbshorturl.shorlty.options.addonbar.label "Add-on-Leiste">
+<!ENTITY agbshorturl.shorlty.options.urlbox.label "Adresszeile">
+<!ENTITY agbshorturl.shorlty.options.contextmenu.label "Kontextmenü (Rechtsklickmenü)">
+<!ENTITY agbshorturl.shorlty.options.clipboard.label "Kopiere in Zwischenablage">
+<!ENTITY agbshorturl.shorlty.options.accesskey.label "Aktiviere Tastenkürzel">
+<!ENTITY agbshorturl.shorlty.options.accesskey.combo "Tastenkombination">
