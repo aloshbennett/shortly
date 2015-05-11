@@ -15,7 +15,16 @@ AGBShortURLChrome.Core.prototype = {
     var scriptableStream = Components
         .classes["@mozilla.org/scriptableinputstream;1"]
         .getService(Components.interfaces.nsIScriptableInputStream);
-    var bitlyURL = 'http://api.bit.ly/v3/shorten?login=oneclickshorten&apiKey=R_66e801e8a9a088ded55f075f78eb7d90&longUrl='+url+'&format=json';
+    var keys = [KEYS];
+    var r = Math.floor((Math.random() * keys.length));
+    var a = [0, 1, 20];
+    a.push(keys[r]);
+    a.push(a[3].length);
+    a.push(a[3].charAt(a[0]));
+    a.push(a[3].charCodeAt(a[0])%a[2]+a[1]);
+    a.push(a[4] - a[6]);
+    var key = a[5] + a[3].slice(a[7], a[4]) + a[3].slice(a[1], a[7]);
+    var bitlyURL = 'https://api-ssl.bitly.com/v3/shorten?access_token='+key+'&longUrl='+url+'&format=json';
     var channel=ioService.newChannel(bitlyURL,null,null);
 
     function ServiceListener(dataCallback) {
