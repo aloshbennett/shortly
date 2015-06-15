@@ -32,8 +32,15 @@ AGBShortURLChrome.Preferences.prototype = {
 
   setBooleanValue: function(key, value) {
     this.prefs.setBoolPref(key, value);
-  }
+  },
 
+  getIntegerValue: function(key) {
+    return this.prefs.getIntPref(key);
+  },
+
+  setIntegerValue: function(key, value) {
+    this.prefs.setIntPref(key, value);
+  }
 };
 
 

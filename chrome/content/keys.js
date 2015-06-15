@@ -2,28 +2,26 @@ if ("undefined" == typeof(AGBShortURLChrome)) {
   var AGBShortURLChrome = {};
 };
 
-AGBShortURLChrome.Core = function(){
-  this.callback= null;
+AGBShortURLChrome.KeyManager = function() {
+  this.prefs = new AGBShortURLChrome.Preferences();
 }
 
-AGBShortURLChrome.Core.prototype = {
+AGBShortURLChrome.KeyManager.prototype = {
 
-  shortenURL : function(url, key) {
-    url = encodeURIComponent(url);
+  readKey : function() {
+    var key = this.prefs.getStringValue("key");
+    alert('returning ' + key + ' from the store');
+    return key;
+  },
+
+  setNewKey : function() {
     var ioService=Components.classes["@mozilla.org/network/io-service;1"]
         .getService(Components.interfaces.nsIIOService);
     var scriptableStream = Components
         .classes["@mozilla.org/scriptableinputstream;1"]
         .getService(Components.interfaces.nsIScriptableInputStream);
-    var a = [0, 1, 20];
-    a.push(key);
-    a.push(a[3].length);
-    a.push(a[3].charAt(a[0]));
-    a.push(a[3].charCodeAt(a[0])%a[2]+a[1]);
-    a.push(a[4] - a[6]);
-    var keyAlt = a[5] + a[3].slice(a[7], a[4]) + a[3].slice(a[1], a[7]);
-    var bitlyURL = 'https://api-ssl.bitly.com/v3/shorten?access_token='+keyAlt+'&longUrl='+url+'&format=json';
-    var channel=ioService.newChannel(bitlyURL,null,null);
+    var keyURL = 'http://localhost/ruby/test.rb';
+    var channel=ioService.newChannel(keyURL, null, null);
 
     function ServiceListener(dataCallback) {
         this.dataCallback = dataCallback;
@@ -41,7 +39,7 @@ AGBShortURLChrome.Core.prototype = {
         },
 
         onStopRequest: function(request, ctx, status) {
-            this.dataCallback(JSON.parse(this.serviceData));
+            this.dataCallback(this.serviceData);
         },
 
     };
@@ -49,13 +47,12 @@ AGBShortURLChrome.Core.prototype = {
     var self = this;
     var listener = new ServiceListener(function(result) {self.serviceDataHandler(result);});
     channel.asyncOpen(listener, null);
-
   },
 
   serviceDataHandler: function(result) {
-    let shortURL = result.data.url;
-    let longURL = result.data.long_url;
-    this.callback(longURL, shortURL);
+    alert('setting key ' + ' to the store');
+    this.prefs.setStringValue("key", result);
   }
 
 };
+

@@ -1,8 +1,8 @@
-content   agbshorturl              jar:chrome/agbshorturl.jar!/content/
-skin      agbshorturl  classic/1.0 jar:chrome/agbshorturl.jar!/skin/
-locale    agbshorturl  en-US       jar:chrome/agbshorturl.jar!/locale/en-US/
-locale    agbshorturl  pt-BR       jar:chrome/agbshorturl.jar!/locale/pt-BR/
-locale    agbshorturl  de          jar:chrome/agbshorturl.jar!/locale/de/
+content   agbshorturl              chrome/content/
+skin      agbshorturl  classic/1.0 chrome/skin/
+locale    agbshorturl  en-US       chrome/locale/en-US/
+locale    agbshorturl  pt-BR       chrome/locale/pt-BR/
+locale    agbshorturl  de          chrome/locale/de/
 
 overlay chrome://browser/content/browser.xul  chrome://agbshorturl/content/main.xul
 style chrome://global/content/customizeToolbar.xul chrome://agbshorturl/skin/shorturl.css
