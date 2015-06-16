@@ -8,6 +8,10 @@ AGBShortURLChrome.Callbacks = {
         AGBShortURLChrome.Shortly.gotShortURL(longURL, shortURL);
     },
 
+    retry : function(longURL) {
+      AGBShortURLChrome.Shortly.retry(longURL);
+    },
+
     preferenceChanged: function(preference) {
         AGBShortURLChrome.Shortly.preferenceChanged(preference);
     },

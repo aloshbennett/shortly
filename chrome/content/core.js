@@ -3,13 +3,12 @@ if ("undefined" == typeof(AGBShortURLChrome)) {
 };
 
 AGBShortURLChrome.Core = function(){
-  this.callback= null;
 }
 
 AGBShortURLChrome.Core.prototype = {
 
-  shortenURL : function(url, key) {
-    url = encodeURIComponent(url);
+  shortenURL : function(longURL, key, onSuccess, onFailure) {
+    var url = encodeURIComponent(longURL);
     var ioService=Components.classes["@mozilla.org/network/io-service;1"]
         .getService(Components.interfaces.nsIIOService);
     var scriptableStream = Components
@@ -46,16 +45,15 @@ AGBShortURLChrome.Core.prototype = {
 
     };
 
-    var self = this;
-    var listener = new ServiceListener(function(result) {self.serviceDataHandler(result);});
+    var listener = new ServiceListener(function(result) {
+        if (result.status_code == 200)
+            onSuccess(result.data.long_url, result.data.url);
+        else if (result.status_code == 500)
+            if(onFailure)
+                onFailure(longURL);
+    });
     channel.asyncOpen(listener, null);
 
-  },
-
-  serviceDataHandler: function(result) {
-    let shortURL = result.data.url;
-    let longURL = result.data.long_url;
-    this.callback(longURL, shortURL);
   }
 
 };

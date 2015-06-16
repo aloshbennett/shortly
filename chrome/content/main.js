@@ -10,8 +10,8 @@ AGBShortURLChrome.Shortly = {
   keys : new AGBShortURLChrome.KeyManager(),
 
   initialize : function() {
-    this.core.callback = AGBShortURLChrome.Callbacks.gotShortURL;
     this.prefs.callback = AGBShortURLChrome.Callbacks.preferenceChanged;
+    this.keys.prefs = this.prefs;
   },
 
   gotShortURL : function(longURL, shortURL) {
@@ -25,11 +25,23 @@ AGBShortURLChrome.Shortly = {
     let shortURL = this.urlCache.get(longURL);
     if(shortURL == null) {
         let key = this.keys.readKey();
-        this.core.shortenURL(longURL, key);
-        this.keys.setNewKey();
+        this.core.shortenURL(longURL, key,
+          AGBShortURLChrome.Callbacks.gotShortURL,
+          AGBShortURLChrome.Callbacks.retry);
+        this.keys.refreshKey(false, null);
     } else {
         this.gotShortURL(longURL, shortURL);
     }
+  },
+
+  retry : function(longURL) {
+    var self = this;
+    this.keys.refreshKey(true, function() {
+      var key = self.keys.readKey();
+      self.core.shortenURL(longURL, key,
+          AGBShortURLChrome.Callbacks.gotShortURL,
+          null);
+    });
   },
 
   preferenceChanged: function(preference) {
