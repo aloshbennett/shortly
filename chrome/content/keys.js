@@ -54,19 +54,21 @@ AGBShortURLChrome.KeyManager.prototype = {
         },
 
         onStopRequest: function(request, ctx, status) {
-            this.dataCallback(this.serviceData);
+            this.dataCallback(this.serviceData, status);
         },
 
     };
 
     var self = this;
-    var listener = new ServiceListener(function(result) {
-      var resultJson = JSON.parse(result);
-      self.prefs.setStringValue("key", resultJson.key);
-      var date = new Date();
-      self.prefs.setStringValue("key.expiry", date.getTime() + resultJson.expiry);
-      if(onSuccess)
-        onSuccess();
+    var listener = new ServiceListener(function(result, status) {
+      if (status == Components.results.NS_OK) {
+        var resultJson = JSON.parse(result);
+        self.prefs.setStringValue("key", resultJson.key);
+        var date = new Date();
+        self.prefs.setStringValue("key.expiry", date.getTime() + resultJson.expiry);
+        if(onSuccess)
+          onSuccess();
+      }
     });
     channel.asyncOpen(listener, null);
   }
