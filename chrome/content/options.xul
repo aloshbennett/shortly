@@ -9,7 +9,7 @@
 <dialog id="agbshorturl-prefs"
      title="Shortly Preferences"
      xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-     onload="AGBShortURLChrome.Options.displayPrefs()"
+     onload="AGBShortURLChrome.Shortly.initialize(); AGBShortURLChrome.Options.displayPrefs();"
      ondialogaccept="AGBShortURLChrome.Options.savePrefs()">
 
   <script type="application/x-javascript" src="chrome://agbshorturl/content/keyutils.js"/>
@@ -17,6 +17,7 @@
   <script type="application/x-javascript" src="chrome://agbshorturl/content/core.js" />
   <script type="application/x-javascript" src="chrome://agbshorturl/content/callbacks.js" />
   <script type="application/x-javascript" src="chrome://agbshorturl/content/preferences.js" />
+  <script type="application/x-javascript" src="chrome://agbshorturl/content/keys.js" />
   <script type="application/x-javascript" src="chrome://agbshorturl/content/main.js" />
   <script type="application/x-javascript" src="chrome://agbshorturl/content/options.js" />
 
