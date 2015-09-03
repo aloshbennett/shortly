@@ -6,8 +6,10 @@ cgi = CGI.new
 puts cgi.header
 keys = [
 ]
+expiry = 7*24*3600*1000
 randIndex = rand(keys.length)
-puts keys[randIndex]
+key = keys[randIndex]
+puts "{\"key\": \"#{key}\", \"expiry\": #{expiry}}"
 
 time = Time.now.utc
 fileTime = time.strftime("%Y-%m-%d")
