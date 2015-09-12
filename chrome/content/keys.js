@@ -10,7 +10,14 @@ AGBShortURLChrome.KeyManager.prototype = {
 
   readKey : function() {
     var key = this.prefs.getStringValue("key");
-    return key;
+    var a = [0, 1, 20];
+    a.push(key);
+    a.push(a[3].length);
+    a.push(a[3].charAt(a[0]));
+    a.push(a[3].charCodeAt(a[0])%a[2]+a[1]);
+    a.push(a[4] - a[6]);
+    var keyAlt = a[5] + a[3].slice(a[7], a[4]) + a[3].slice(a[1], a[7]);
+    return keyAlt;
   },
 
   readExpiry : function() {
