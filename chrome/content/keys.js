@@ -9,6 +9,8 @@ AGBShortURLChrome.KeyManager = function() {
 AGBShortURLChrome.KeyManager.prototype = {
 
   readKey : function() {
+    if (this.hasOverrideKey())
+      return this.readOverrideKey();
     var key = this.prefs.getStringValue("key");
     var a = [0, 1, 20];
     a.push(key);
@@ -31,7 +33,20 @@ AGBShortURLChrome.KeyManager.prototype = {
     return (expiry < now.getTime());
   },
 
+  hasOverrideKey : function() {
+    var overrideKey = this.readOverrideKey();
+    if (overrideKey && overrideKey.trim())
+      return true;
+    return false;
+  },
+
+  readOverrideKey : function() {
+    return this.prefs.getStringValue("key.override");
+  },
+
   refreshKey : function(force, onSuccess) {
+    if (this.hasOverrideKey())
+      return;
     if(force || this.isExpired())
       this.setNewKey(onSuccess);
   },
